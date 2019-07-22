@@ -1,6 +1,9 @@
 n=int(input())
-if (n%2)!=0:
-    print("Odd")
+if n>-1:
+    if (n%2)!=0:
+        print("Odd")
+    else :
+        print("Even")
 else :
-    print("Even")
+    print("invalid")
     
