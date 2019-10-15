@@ -1,0 +1,321 @@
+Home.html
+<html>
+	<head>
+		<title>OXFORD BOOK SHOPE</title>
+	</head>
+	<frameset rows="15%,*,10%">
+		<frame src="banner.html" name="banner">
+		<frameset cols="25%,*">
+			<frame src="contents.html" >
+			<frame src="main.html" name="main">
+		</frameset>
+		<frame src="footer.html" name="footer">
+	</frameset>
+</html>
+
+Banner.html
+<html>
+	<head>
+		<title>Banner</title>
+	</head>
+	<body bgcolor="brown">
+		<font face="timesnewroman" color="black" size="7">
+		
+<marquee>Welcome to online oxford Book shope</marquee>
+
+	</body>
+</html>
+
+Homepage.html
+<html>
+	<head>
+	<h1 align=center>OXFORD ONLINE BOOK SHOPPING</h1> 
+	</head>
+<body bgcolor="lavender" text="black">
+<p align="justify"><font face="timesnewroman" size="5" color="blue">
+The Oxford Bookstore formerly known as Oxford Bookstore and Stationery Company 
+is an Indian book store-chain established in 1920. It has no connection with Oxford 
+University Press. Its outlets, on prime locations in the high streets of most of 
+the major cities of the Raj such as Delhi, Mumbai, Meerut, Chennai (2006) 
+and Calcutta, are well known even today. Still known as the 'Oxford Bookstores, 
+the outlets are now managed by the Apeejay Surrendra Group, a Calcutta-based conglomerate, 
+while the book wholesaling business has been merged with India Book House to become Oxford
+</p>
+<br>
+<br>
+
+<address>
+<u>OXFORD BOOKS SHOPPING</u><br>
+No. 39/12, Haddows Road,<br>
+Nungambakkam, <br>
+Haddows Road, <br>
+Aayiram Vilakku  <br>
+Chennai,Tamil Nadu 600034 <br>
+Phone :044 28227711<br>
+</address>
+</body>
+</html>
+
+Content.html
+
+<html>
+<head> 	
+<title> Contents </title> 
+</head>
+<body bgcolor="sky blue"> 
+<font face="Arial" color="152454" size="2">
+<br><br>
+<a href="Home.html" target="main"> Home Page </a> <br><br>
+<a href=" login.html" target="main"> Registration and User Login </a> <br><br>
+<a href="Book Catalog.html" target="main"> Book Catalog</a> <br><br>
+<a href="Shopping Chart.html" target="main"> Shopping Chart </a> <br><br>
+<a href="Payment by Credit Card.html" target="main"> Payment by Credit Card </a> <br><br>
+<a href="Order Conformation.html" target="main">Order Conformation </a> 
+</body>
+</html>
+
+Login.html
+<html>
+<head>
+     <title> Login page </title>
+</head>
+<body >
+<h1 align=center font-color="red"><u>Simple Login Page </u></h1>
+<form name="login">
+<center>
+      Username<input type="text" name="userid"><br><br>
+      Password<input type="password" name="pswrd"><br><br><br><br>
+      <input type="button" onclick="check(this.form)" value="Login">
+       <input type="reset" value="Cancel">
+<center>
+</form>
+<script language="javascript">
+function check(form)
+{
+ 
+ if(form.userid.value == "hema" && form.pswrd.value == "hema")
+  {
+    window.open('Payment by Credit Card.html')
+  }
+ else
+ {
+   alert("Error Password or Username")
+  }
+}
+</script>
+</body>
+</html>
+Shoppingchart.html
+<html>
+<head> 	
+<title> shopping </title> 
+</head>
+<body bgcolor="lightblue">
+<h1 align="center">SHOPPING CHART</h1>
+<hr size="10" color="black">
+<p>When you are ready to check out, please click the "proceed to check out"button at the bottom of this page. 
+You will be taken to the oxford.com cart page to securely complete your transaction.
+</p><br>
+<br>
+<form>
+<input type="checkbox" name="color" value="mastering_c++_book">mastering_c++_book &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$598.00 <br>
+<input type="Checkbox" name="color" value="Programming in c">Programming in c  &nbsp;&nbsp;$591.50<br>
+<input type="Checkbox" name="color" value="java Programming">java Programming &nbsp;&nbsp;$766.50<br>
+<input type="Checkbox" name="color" value="HTML & CSS">HTML & CSS &nbsp;&nbsp;$568.50<br>
+<input type="Checkbox" name="color" value="Data Structure">Data Structure &nbsp;&nbsp;$9876.00<br>
+<input type="Checkbox" name="color" value="Data Mining">Data Mining &nbsp;&nbsp;$300.00<br>
+<input type="Checkbox" name="color" value="Computer Graphics">Computer Graphics &nbsp;&nbsp;$768.00<br>
+<input type="Checkbox" name="color" value="Visual Basic C++">Visual Basic C++ &nbsp;&nbsp;$456.00<br>
+<a href="Payment by Credit Card.html">Payment by Credit Card</a>
+</form>
+</body>
+</html>
+Book Catlog:-
+
+<html>
+<head> 	
+<title> Contents </title> 
+</head>
+<body bgcolor="white">
+
+<img src="z:\c.jpg" height="100" width="100" alt="image missing">
+<img src="z:\DataStructuresThroughC++.jpg" height="100" width="100" alt="image missing">
+<img src="z:\dbms_korth1.jpg" height="100" width="100" alt="image missing">
+</body>
+</html>
+
+User profile and payment by credit card
+<html>
+<head><title>Form validation</title>
+<script language="javascript">
+var s1,s2,s3,s4,s5,s6,s7,s8;
+function fun1()
+{
+ if(form1.name.value=="")
+ {
+ 	alert("enter the name");
+ 	form1.name.focus();
+ }
+ else
+ {
+	
+	var l=form1.name.value.length;
+	s1=new String(form1.name.value);
+	for(i=0;i<l;i++)
+	{
+	  if(!((s1.charAt(i)>='a'||s1.charAt(i)>='A') && (s1.charAt(i)<='z'||s1.charAt(i)<='Z')))
+	  {
+	  alert("Please enter the correct name");
+	  form1.name.focus();
+	  break;
+	  }	
+	  
+	}	
+  }
+}
+function fun2()
+{
+ if(form1.email.value=="")
+ {
+	 alert("enter the email");
+	 form1.email.focus();
+ }
+ else
+ { 
+	 var c1=0;
+	 var c2=0;
+	 var l=form1.email.value.length;
+	 s2=new String(form1.email.value);
+	 for(i=0;i<=l;i++)
+	 {
+	   if(s2.charAt(i)=='@')
+	   {
+		 c1=c1+1;
+		var j=i;
+	   }
+	 }
+	 if(c1==1)
+	 {
+		for(i=j;i<=l;i++)
+		{
+		   if(s2.charAt(i)=='.')
+		    c2=c2+1;
+		}
+	 }
+	 if(!((c1==1) && (c2==1)))
+	 {
+		alert("enter the correct e-mail id");
+		form1.email.focus();
+	 }
+ }
+}
+function fun3()
+{
+	s3=form1.age.value;
+ 	 if((s3=="")||isNaN(s3)) //isNaN() function determines whether a value is an illegal number 
+	 {
+ 	alert("enter the age");
+ 	form1.age.focus();
+ 	}
+}
+function fun4()
+{
+	s4=form1.addrs.value;
+ 	 if(s4=="")
+	 {
+ 	alert("enter the address");
+ 	form1.addrs.focus();
+ 	}
+}
+function fun5()
+{
+ 	s5=form1.phno.value;
+	if((s5=="") || isNaN(s5))
+ 	{
+ 	alert("Invalid phone number");
+ 	form1.phno.focus();
+	}
+}
+function fun6()
+{
+	var tag1=0;
+
+	for(var i=0;i<form1.bank.length;i++)
+	{
+        if (form1.bank[i].checked==true)         
+	{
+	s6=form1.bank[i].value; 
+	tag1=1;
+	}
+	}
+	if(!(tag1==1))
+	{
+	alert("select ur Bank");
+	}
+
+}
+function fun7()
+{
+ 	s7=form1.card.value;
+	if((s7=="") || isNaN(s7))
+ 	{
+ 	alert("Invalid card number");
+ 	form1.card.focus();
+	}
+}
+function fun8()
+{
+
+ 	s8=form1.pin.value;
+        var l=form1.pin.value.length;
+        if(((s8=="") || isNaN(s8))&&(l==3))
+        {
+ 	alert("Invalid card number");
+ 	form1.pin.focus();
+	}
+}
+function fun9()
+{
+w1=window.open('Order Conformation.html');
+w1.document.writeln("<h1><center>");
+w1.document.writeln("Order Conformation Details");
+w1.document.writeln("</h1></center>");
+w1.document.writeln("<br>");
+w1.document.writeln("Name:",s1);
+w1.document.writeln("<br>");
+w1.document.writeln("Email:",s2);
+w1.document.writeln("<br>");
+w1.document.writeln("age:",s3);
+w1.document.writeln("<br>");
+w1.document.writeln("Address:",s4);
+w1.document.writeln("<br>");
+w1.document.writeln("Phone:",s5);
+w1.document.writeln("<br>");
+w1.document.writeln("Bank Name:",s6);
+w1.document.writeln("<br>");
+w1.document.writeln("Card Number:",s7);
+w1.document.writeln("<br>");
+}
+</script></head>
+<body bgcolor="gray" >
+<h1><b><u> User profile </u></b></h1>
+<form name="form1"  method="get">
+<b>
+Name:&nbsp;&nbsp<input type="text" name="name" maxlen="5"><br>
+E-mail:&nbsp<input type="text" name="email" onfocus="fun1()"><br>
+Age:&nbsp;&nbsp;&nbsp<input type="text" name="age" onfocus="fun2()"><br>
+Address:&nbsp;&nbsp;<textarea onfocus="fun3()" rows=10 cols=20 name=addrs></textarea><br>
+Phoneno:&nbsp;&nbsp;<input type="text" name="phno" onfocus="fun4() "><br>
+Bank Name:<br>
+input type="radio" onfocus="fun5()" name="bank" value="Indian Bank">Indian Bank
+input type="radio" onfocus="fun5()" name="bank" value="Indian Overseas Bank">Indian Overseas Bank <br>
+input type="radio" onfocus="fun5()" name="bank"value="ICICI">ICICI
+input type="radio" onfocus="fun5()" name="bank" value="Axis">Axis <br>
+Card No:&nbsp;&nbsp;<input type="text" name="card" onfocus="fun6() "><br>
+Pin No:&nbsp;&nbsp<input type="password" name="pin"onfocus="fun7() "><br><br><br><br>
+<input type="button" value="submit" onfocus="fun8()" onclick="fun9()">
+<input type=”reset “ value=clear>
+</b>
+</form>
+</body>
+</html>
