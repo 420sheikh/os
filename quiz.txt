@@ -1,34 +1,120 @@
 <html>
-	<body>
-		<h1>Simple XML Parser using String</h1>
-		<div>
-			<b>To:</b> <span id="to"></span><br/>
-			<b>From:</b> <span id="from"></span><br/>
-			<b>Heading:</b> <span id="head"></span><br/>
-			<b>Message:</b> <span id="message"></span>
-		</div>
-		<script type="text/javascript">
-			txt="<note>";
-			txt=txt+"<to>Balu</to>";
-			txt=txt+"<from>Raju</from>";
-			txt=txt+"<heading>Reminder</heading>";
-			txt=txt+"<body>Hi, Good morning III year IT...</body>";
-			txt=txt+"</note>";
-if (window.DOMParser)
+<head>
+<script>
+var dmin
+var dsec
+var dumin
+var dusec
+function timein()
 {
-	parser=new DOMParser();
-	xmlDoc=parser.parseFromString(txt,"text/xml");
- }
-else 
-  {
-	xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
-	xmlDoc.async=false;
-	xmlDoc.loadXML(txt);
-  }
-document.getElementById("to").innerHTML=xmlDoc.getElementsByTagName("to")[0].childNodes[0].nodeValue;
-document.getElementById("from").innerHTML=xmlDoc.getElementsByTagName("from")[0].childNodes[0].nodeValue;
-document.getElementById("head").innerHTML=xmlDoc.getElementsByTagName("heading")[0].childNodes[0].nodeValue;
-document.getElementById("message").innerHTML=xmlDoc.getElementsByTagName("body")[0].childNodes[0].nodeValue;
-		</script>
-	</body>
+var dt=new Date()
+var hr=dt.getHours()
+var mt=dt.getMinutes()
+var sec=dt.getSeconds()
+dsec=sec
+dmin=mt
+document.a.time.value=hr+":"+mt+":"+sec
+}
+function timeout()
+{
+var dt=new Date()
+var hr=dt.getHours()
+var mt=dt.getMinutes()
+var sec=dt.getSeconds()
+dumin=mt
+dusec=sec
+if((dmin+1)==dumin && dsec==dusec)
+{
+alert("Time out")
+location.href="sorry.html"
+}
+document.a.ctime.value=hr+":"+mt+":"+sec
+setTimeout("timeout()",1000)
+}
+</script>
+</head>
+<body onLoad="timein(),timeout()">
+<form name="a" action="an1.asp" method="post">
+<input type=text name=time size=20>
+<input type=text name=ctime size=20>
+<ol>
+<li>
+What does ASP stand for?
+<br>
+<input type=radio name=q1 value=a1>Active Server Pages<br>
+<input type=radio name=q1 value=a2>Active Standard Pages<br>
+<input type=radio name=q1 value=a3>A Server Page<br>
+</li>
+<li>
+ASP server scripts are surrounded by delimiters, which?
+<br>
+<input type=radio name=q2 value=a1><%>...</%><br>
+<input type=radio name=q2 value=a2><%...%><br>
+<input type=radio name=q2 value=a3><&>...</&><br>
+</li>
+<li>
+How do you write "Hello World" in ASP
+<br>
+<input type=radio name=q3 value=a1>"Hello World"<br>
+<input type=radio name=q3 value=a2>Document.Write("Hello World")<br>
+<input type=radio name=q3 value=a3>Response.Write("Hello World")<br>
+</li>
+<li>
+ How can you script your ASP code in JavaScript?
+<br>
+<input type=radio name=q4 value=a1>Start the document with: <% language="javascript" %><br>
+<input type=radio name=q4 value=a2>Start the document with: <%@ language="javascript" %><br>
+<input type=radio name=q4 value=a3>JavaScript is the default scripting language<br>
+</li>
+</ol>
+<input type=submit value="ok">
+</form>
+</body>
+</html>
+Sorry.html
+<html>
+<body>sorry time expired...</body>
+</head>
+
+An1.Asp
+<html>
+<body>
+<%
+dim c
+dim ans1
+dim ans2
+dim ans3
+response.write("Sample")
+ans1=Request.form("q1")
+if(ans1="a1") then
+c=c+4
+else
+c=c-1
+end if
+ans2=Request.form("q2")
+if(ans2="a2") then
+c=c+4
+else
+c=c-1
+end if
+ans3=Request.form("q3")
+if(ans3="a3") then
+c=c+4
+else
+c=c-1
+end if
+ans3=Request.form("q4")
+if(ans3="a2") then
+c=c+4
+else
+c=c-1
+end if
+response.write("<br>")
+response.write("<h3>")
+response.write("ur score is..")
+response.write(":")
+response.write(c)
+response.write("</h3>")
+%>
+</body>
 </html>
