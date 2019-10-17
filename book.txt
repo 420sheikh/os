@@ -64,3 +64,4 @@ System.out.println("\n avg wait time = "+avgwait);
 System.out.println("\n avg total time = "+avgtot);
 }
 }
+
