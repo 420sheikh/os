@@ -1,0 +1,95 @@
+import java.io.*;
+import java.util.*;
+class monitor
+{
+static int nor=0;
+static int now=0;
+boolean busy=false;
+synchronized void startread()
+{
+try
+{
+if(now!=0)
+wait();
+}
+catch(Exception e)
+{
+System.out.println(e);
+}
+nor=nor+1;
+}
+synchronized void finishread()
+{
+nor=nor-1;
+if(nor==0)
+notify();
+}
+synchronized void startwrite()
+{
+try
+{
+if(busy||(nor>0))
+wait();
+}
+catch(Exception e)
+{
+System.out.println(e);
+}
+now=now+1;
+busy=true;
+}
+synchronized void finishwrite()
+{
+now=now-1;
+busy=false;
+if(now==0)
+{
+notifyAll();
+}
+}
+}
+class reader implements Runnable
+{
+monitor m=new monitor();
+reader(monitor m1)
+{
+m=m1;
+Thread t=new Thread(this);
+t.start();
+}
+public void run()
+{
+m.startread();
+System.out.println("Reading Started");
+System.out.println("Reading Finished");
+m.finishread();
+}
+}
+class writer implements Runnable
+{
+monitor m=new monitor();
+writer(monitor m1)
+{
+Thread t1=new Thread(this);
+m=m1;
+t1.start();
+}
+public void run()
+{
+m.startwrite();
+System.out.println("Writing Started");
+System.out.println("Writing Finished");
+m.finishwrite();
+}
+}
+class red
+{
+public static void main(String args[])
+{
+monitor s=new monitor();
+new writer(s);
+new reader(s);
+new writer(s);
+new reader(s);
+}
+}
