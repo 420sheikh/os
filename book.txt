@@ -1,107 +1,66 @@
-Book.xml
-
-<?xml version="1.0"?>
-<?xml-stylesheet type="text/xsl" href="books.xsl"?>
-
-<BOOKS>
-<BOOK>
-
-<TITLE>java</TITLE>
-<AUTHOR>pattrick</AUTHOR>
-<PUBLISHER>tata mcgraw hill</PUBLISHER>
-<PRICE>530</PRICE>
-</BOOK>
-
-<BOOK>
-<TITLE>asp</TITLE>
-<AUTHOR>micheal</AUTHOR>
-<PUBLISHER>tech media</PUBLISHER>
-<PRICE>450</PRICE>
-</BOOK>
-
-<BOOK>
-<TITLE>Lost Symbol</TITLE>
-<AUTHOR>Dan Brown</AUTHOR>
-<PUBLISHER>Book Worms</PUBLISHER>
-<PRICE>380</PRICE>
-</BOOK>
-
-<BOOK>
-<TITLE>XML Complete Reference</TITLE>
-<AUTHOR>Heather Williamson</AUTHOR>
-<PUBLISHER>tata mcgraw hill</PUBLISHER>
-<PRICE>560</PRICE>
-</BOOK>
-
-<BOOK>
-<TITLE>The Complete Reference HTML</TITLE>
-<AUTHOR>Thomas A. Powell</AUTHOR>
-<PUBLISHER>Tata McGraw Hill</PUBLISHER>
-<PRICE>450</PRICE>
-</BOOK>
-
-<BOOK>
-<TITLE>Java Script Complete Reference</TITLE>
-<AUTHOR>Thomas A. Powell</AUTHOR>
-<PUBLISHER>Tata McGraw Hills</PUBLISHER>
-<PRICE>390</PRICE>
-</BOOK>
-
-<BOOK>
-<TITLE>ASP . Net 4 unleashed</TITLE>
-<AUTHOR>Stephen Walther</AUTHOR>
-<PUBLISHER>Pearson Education</PUBLISHER>
-<PRICE>1530</PRICE>
-</BOOK>
-
-<BOOK>
-<TITLE>Internet and world wide web</TITLE>
-<AUTHOR>Deitel</AUTHOR>
-<PUBLISHER>Prentice Hall</PUBLISHER>
-<PRICE>1000</PRICE>
-</BOOK>
-
-<BOOK>
-<TITLE>Computer Graphics</TITLE>
-<AUTHOR>Donald Hearn</AUTHOR>
-<PUBLISHER>Tata McGraw Hill</PUBLISHER>
-<PRICE>450</PRICE>
-</BOOK>
-
-<BOOK>
-<TITLE>Multimedia</TITLE>
-<AUTHOR>Tay Vaughan</AUTHOR>
-<PUBLISHER>Tata McGraw Hills</PUBLISHER>
-<PRICE>300</PRICE>
-</BOOK>
-
-</BOOKS>
-
-Books.xsl
-
-<?xml version="1.0"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/TR/WD-xsl">
-<xsl:template match="/">
-<HTML>
-<BODY>
-<TABLE BORDER="10" BGCOLOR="orange" cellpading="20" cellspacing="15" align="center">
-<CAPTION>BOOKS DETAILS</CAPTION>
-<TR>
-<TH>TITLE</TH>
-<TH>AUTHOR</TH>
-<TH>PUBLISHER</TH>
-<TH>PRICE</TH>
-</TR>
-<xsl:for-each select="BOOKS/BOOK">
-<TR>
-<TD><xsl:value-of select ="TITLE"/></TD>
-<TD><xsl:value-of select ="AUTHOR"/></TD>
-<TD><xsl:value-of select ="PUBLISHER"/></TD>
-<TD><xsl:value-of select ="PRICE"/></TD>
-</TR>
-</xsl:for-each>
-</TABLE>
-</BODY>
-</HTML>
-</xsl:template>
-</xsl:stylesheet>
+import java.io.*;
+import java.util.*;
+class priority
+{
+public static void main(String args[]) throws IOException
+{
+int i,j,n;
+float tot[]=new float[100];
+float cpu[]=new float[100];
+float wait[]=new float[100];
+int pri[]=new int[10];
+Scanner sn=new Scanner(System.in);
+System.out.println("\t\t\tWELCOME\n");
+System.out.println("enter the no. of processes");
+n=sn.nextInt();
+System.out.println("Enter cpu time");
+for(i=1;i<=n;i++)
+{
+cpu[i]=sn.nextFloat();
+}
+System.out.println("Enter the priority");
+for(i=1;i<=n;i++)
+{
+pri[i]=sn.nextInt();
+}
+for(i=1;i<=n;i++)
+{
+for(j=i+1;j<=n;j++)
+{
+if(pri[i]>pri[j])
+{
+int p=pri[i];
+pri[i]=pri[j];
+pri[j]=p;
+float t=cpu[i];
+cpu[i]=cpu[j];
+cpu[j]=t;
+}
+}
+}
+wait[1]=0;
+tot[1]=cpu[1];
+for(i=1;i<=n;i++)
+{
+wait[i]=tot[i-1];
+tot[i]=tot[i-1]+cpu[i];
+}
+float totwait=0,total=0;
+float avgwait,avgtot;
+for(i=1;i<=n;i++)
+{
+totwait=totwait+wait[i];
+total=total+tot[i];
+}
+avgwait=totwait/n;
+avgtot=total/n;
+System.out.println("the result is");
+System.out.println("\n\t pid\tcpu time\tpriority\twait time\ttotal time");
+for(i=1;i<=n;i++)
+{
+System.out.println("\n\t"+i+"\t\t"+cpu[i]+"\t\t"+pri[i]+"\t\t"+wait[i]+"\t\t"+tot[i]);
+} 
+System.out.println("\n avg wait time = "+avgwait);
+System.out.println("\n avg total time = "+avgtot);
+}
+}
