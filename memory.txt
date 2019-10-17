@@ -1,0 +1,94 @@
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+class memmgnt
+{
+public static void main(String args[])throws IOException 
+{
+int found,i,n,j,ch,p=0;
+int all[]=new int[10];
+int size[]=new int[10];
+int req[]=new int[10];
+System.out.println("\t\t\tMEMORY MANAGEMENT\n");
+int allocate[][]=new int[10][10];
+Scanner sn=new Scanner(System.in);
+System.out.println("Enter the No. of Partition: ");
+p=sn.nextInt();
+System.out.println("Enter the Part Size: ");
+for(i=1;i<=p;i++)
+size[i]=sn.nextInt();
+System.out.println("Enter N: ");
+n=sn.nextInt();
+System.out.println("Enter the Mem Req of Jobs");
+for(i=1;i<=n;i++)
+{
+req[i]=sn.nextInt();
+}
+System.out.println("CHOOSE TYPE");
+System.out.println("1. FIRST FIT");
+System.out.println("2. BEST FIT");
+System.out.println("3. WORST FIT");
+System.out.println("Enter UR Choice");
+ch=sn.nextInt();
+switch(ch)
+{
+case 1:
+break;
+case 2:
+for (int m=1;m<=n;m++)
+{
+for(int o=m+1;o<=p;o++)
+{
+if(size[m]>size[o])
+{
+int temp=size[m];
+size[m]=size[o];
+size[o]=temp;
+}
+}
+}
+break;
+case 3:
+for (int m=1;m<=n;m++)
+{
+for(int o=m+1;o<=p;o++)
+{
+if(size[m]<=size[o])
+{
+int temp=size[m];
+size[m]=size[o];
+size[o]=temp;
+} } }
+break;
+}
+System.out.println("\t\t\tMEMORY MANAGEMENT\n");
+for(j=1;j<=n;j++)
+{
+i=1;found=0;
+while((i<=p)&&(found==0))
+{
+if((size[i]>=req[j])&&(all[i]==0))
+{
+allocate[j][1]=j;
+allocate[j][2]=size[i];
+allocate[j][3]=req[j];
+all[i]=1;
+found=1;
+}
+i++;
+}
+if((i>p)&&(found==0))
+System.out.println("The job size "+req[j]+"cant be accomodated");
+}
+System.out.println("\n\t\t\tALLOCATION TABLE");
+System.out.println("sno\tjob no\tsize part\tjobsize");
+for(i=1;i<=n;i++)
+{
+System.out.println(i+"\t"+allocate[i][1]+"\t    "+allocate[i][2]+"\t\t"+allocate[i][3]);
+}
+System.out.println("\n\t\t\tFREE TABLE");
+System.out.println("PAR NO\tSize");
+for(j=1;j<=p;j++)
+if(all[j]!=1)
+System.out.println(j+"\t"+size[j]);
+} }
